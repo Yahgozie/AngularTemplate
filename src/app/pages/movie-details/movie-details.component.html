@@ -59,13 +59,31 @@
       </div>
     </p-tabPanel>
     <p-tabPanel header="Photos">
-       <div class="grid">
+      <div class="grid">
         <ng-container *ngFor="let movieImage of movieImages?.backdrops">
           <div class="col-12 md:col-4 lg:col-4">
-            <p-image [src]="imagesSizes.large + movieImage.file_path" alt="image" width="100%" [preview]="true"></p-image>
+            <p-image
+              [src]="imagesSizes.large + movieImage.file_path"
+              alt="image"
+              width="100%"
+              [preview]="true"
+            ></p-image>
           </div>
         </ng-container>
       </div>
     </p-tabPanel>
   </p-tabView>
+  <!-- <p-carousel *ngIf="movieCredits" [value]="movieCredits.cast">
+    <ng-template let-actor pTemplate="item">
+      {{actor.name}}
+    </ng-template>
+  </p-carousel> -->
+
+ 
+<p-carousel *ngIf="movieCredits" [value]="movieCredits.cast"[numVisible]="3" [numScroll]="3" [circular]="false" >
+    <ng-template let-actor pTemplate="item">
+      {{actor.name}}
+    </ng-template>
+</p-carousel>
+<h3>Welcome to software development</h3>
 </ng-container>

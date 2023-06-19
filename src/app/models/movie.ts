@@ -44,5 +44,12 @@ export interface MovieVideo {
 export interface MovieImages {
   backdrops: {
     file_path: string;
-  }[]
+  }[];
+}
+
+export interface MovieCredits {
+  cast: {
+    name: string;
+    profile_path: string;
+  }[];
 }

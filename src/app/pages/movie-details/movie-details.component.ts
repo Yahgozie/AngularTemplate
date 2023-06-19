@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IMAGES_SIZES } from 'src/app/constants/image-sizes';
-import { Movie, MovieImages, MovieVideo } from 'src/app/models/movie';
+import { Movie, MovieCredits, MovieImages, MovieVideo } from 'src/app/models/movie';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class MovieDetailsComponent implements OnInit {
   movie: Movie | null = null; //member fields should always be defined before the constructor.
   movieVideos: MovieVideo[] = [];
   movieImages: MovieImages | null = null;
+  movieCredits: MovieCredits | null = null;
   imagesSizes = IMAGES_SIZES;
 
   constructor(
@@ -41,8 +42,17 @@ export class MovieDetailsComponent implements OnInit {
       .subscribe((movievideoData) => (this.movieVideos = movievideoData));
   }
 
-  getMovieImages(id: string){
-    this.moviesService.getMovieImages(id).subscribe((movieImagesData) => this.movieImages = movieImagesData)
-  };
+  getMovieImages(id: string) {
+    this.moviesService
+      .getMovieImages(id)
+      .subscribe((movieImagesData) => (this.movieImages = movieImagesData));
+  }
 
+  getMovieCredits(id: string) {
+    this.moviesService
+      .getMovieCredits(id)
+      .subscribe((movieImagesData) => (this.movieCredits = movieImagesData));
+  }
 }
+
+
